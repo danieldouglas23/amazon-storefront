@@ -1,9 +1,3 @@
 # amazon-storefront
 
-<video width="320" height="240" controls>
-  <source src="bamazoncustomer.webm" type="webm">
-</video>
-
-<video width="320" height="240" controls>
-  <source src="bamazonmanager.webm" type="webm">
-</video>
+Please view the videos I included for both the customer and manager applications. I did not have time to attempt Challenge #3 here. I believe I addressed each requirement and tried to show with mouse pointing at these areas (such as the numeric validators). 
