@@ -38,12 +38,24 @@ function promptUser() {
         {
             type: "input",
             message: "Please select the ID of the desired item: ",
-            name: "itemID"
+            name: "itemID",
+            validate: function(value) {
+                if (isNaN(value) === false) {
+                  return true;
+                }
+                return false;
+              }
         },
         {
             type: "input",
             message: "How many would you like to buy? ",
-            name: "quantity"
+            name: "quantity",
+            validate: function(value) {
+                if (isNaN(value) === false) {
+                  return true;
+                }
+                return false;
+              }
         },
     ])
         .then(function (answer) {
@@ -53,12 +65,14 @@ function promptUser() {
                 function (err, res) {
                     if (err) throw err;
                     newQuantity = res[0].stock_quantity - answerQuantity;
-                    cost = res[0].price * answerQuantity;
+                    preCost = res[0].price * answerQuantity;
+                    cost = preCost.toFixed(2);
                     if (answerQuantity < res[0].stock_quantity) {
                         fulfill();
-                        displayItems();
+                        
                     } else {
                         console.log("\nSorry, insufficient quantity in stock!");
+                        displayItems();
                     }
                 });
         });
@@ -75,6 +89,32 @@ function fulfill() {
             }
         ], function (err, res) {
             if (err) throw err;
-            console.log("Total cost: $" + (cost));
+            console.log("\nTotal purchase cost: $" + (cost));
+            console.log("\n");
+            runAgain();
         });
 }
+
+function runAgain() {
+    inquirer.prompt({
+        name: "selection",
+        type: "list",
+        message: "What would you like to do?",
+        choices: [
+            "Purchase Again",
+            "Exit"
+        ]
+    })
+        .then(function (answer) {
+            switch (answer.selection) {
+                case "Purchase Again":
+                    displayItems();
+                    break;
+
+                case "Exit":
+                    connection.end();
+            }
+        });
+}
+
+

@@ -23,6 +23,6 @@ VALUES ("ANCO AR-14D Rear Wiper Blade", "Auto Parts", 10.53, 15),
 ("iPhone 7 Glass Screen Protector", "Cell Phones & Accessories", 6.99, 100),
 ("EltaMD UV Sport SPF 50, 7.0 oz", "Health & Beauty", 47.50, 30),
 ("Bridgestone e6 Golf Balls - 12-pack", "Sporting Goods", 23.99, 12),
-("32oz Hydro Flask (Green)", "Home & Kitchen", 39.95, 6);
+("32oz Hydro Flask (Green)", "Home & Kitchen", 39.95, 4);
 
 SELECT * FROM products;
